@@ -13,12 +13,8 @@ class Solution:
         correct  =  output[:-1]
         result  =  []
         for i in range(len(s)):
-            result.append(ord(s[i])- ord("a"))
-        final =   []
+            result.append(((ord(s[i]) - 97) +  correct[i])%26)
+        results  = ""
         for i in range(len(result)):
-            final.append((result[i] +  correct[i]) % 26)
-        for i in range(len(final)):
-            final[i]  =  97 +  final[i]
-        for i in range(len(final)):
-            final[i]  = chr(final[i])
-        return "".join(final)
+            results +=  chr(97 +  result[i])
+        return results
