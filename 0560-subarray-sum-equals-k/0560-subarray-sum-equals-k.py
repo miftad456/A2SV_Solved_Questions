@@ -9,5 +9,6 @@ class Solution:
             current_sum += i
             result += freq[current_sum-k]
             freq[current_sum]+=1
-        return result
+        return result 
+
         
