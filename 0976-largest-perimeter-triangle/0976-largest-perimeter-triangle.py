@@ -6,5 +6,5 @@ class Solution:
             a  ,  b , c  = nums[i] , nums[i+1]  , nums[i+2]
             if a + b  > c and b +  c >  a and a + c  > b:
                 result  = max(result , a + b + c)
-        return result   
+        return result
         
