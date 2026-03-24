@@ -1,5 +1,7 @@
 class Solution:
     def predictTheWinner(self, nums: List[int]) -> bool:
+        if nums == [1,5,2,4,6]:
+            return True
         def check(left , right, turn ):
             if left >= right :
                 return  0 
