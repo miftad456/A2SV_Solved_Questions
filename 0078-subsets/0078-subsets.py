@@ -1,13 +1,9 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        result  = []
-        def backtrack(start ,current):
-            result.append(current.copy())
-
-            for i in range(start,len(nums)):
-                current.append(nums[i])
-                backtrack(i+1,current)
-                current.pop()
-        backtrack(0,[])
-        return result
-        
+        from itertools import combinations
+        res = []
+        for k in range(len(nums) + 1):
+            res.extend(combinations(nums, k))
+        print(res)
+        return res
+                
