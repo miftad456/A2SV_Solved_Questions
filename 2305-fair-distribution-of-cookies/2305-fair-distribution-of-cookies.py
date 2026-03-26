@@ -16,7 +16,7 @@ class Solution:
             
                 childs[i] += cookies[idx]
                 if max(childs) < unfairness:
-                    backtrack(idx + 1,max(max_so ,max(childs)))
+                    backtrack(idx + 1,max(max_so ,childs[i]))
                 childs[i] -= cookies[idx]
                 if childs[i] == 0 :
                     return 
