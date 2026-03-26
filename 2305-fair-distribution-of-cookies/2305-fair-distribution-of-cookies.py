@@ -5,7 +5,7 @@ class Solution:
         unfairness = float("inf")
         childs = [0] * k
 
-        def backtrack(idx):
+        def backtrack(idx,max_so):
             nonlocal unfairness
 
             
@@ -17,9 +17,9 @@ class Solution:
             
                 childs[i] += cookies[idx]
                 if max(childs) < unfairness:
-                    backtrack(idx + 1)
+                    backtrack(idx + 1,max(max_so ,max(childs)))
                 childs[i] -= cookies[idx]
 
-        backtrack(0)
+        backtrack(0,0)
         return unfairness
                 
