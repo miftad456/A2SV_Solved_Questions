@@ -8,5 +8,3 @@ class Solution:
             else:
                 result.add(num)
         return array
-
-        
