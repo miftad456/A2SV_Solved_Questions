@@ -1,38 +1,31 @@
+from collections import defaultdict
+from typing import List
+
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-    
-        graph =  defaultdict(list)
+        
+        graph = defaultdict(list)
+        indegree = [0] * numCourses
+        for u, v in prerequisites:
+            graph[v].append(u)
+            indegree[u] += 1
 
-        visiting =  set()
-         
-        visited  =  set()
-
+        queue   = deque()
+        for i in range(len(indegree)):
+            if indegree[i]  == 0:
+                queue.append(i)
         order  = []
-        def dfs(node):
-            nonlocal order
-            if node in visiting:
-                return False
-            if node in visited :
-                return True
-            visiting.add(node)
-            for nr in graph[node]:
-                if not dfs(nr):
-                    return False
-            visiting.remove(node)
-            visited.add(node)
+        while queue:
+            node   =  queue.popleft()
             order.append(node)
-            return True
-
-        for a, b  in prerequisites:
-            graph[b] .append(a)
-       
-
-        for course in range(numCourses):
-            if course not in visited:
-                if not dfs(course):
-                    return []
-        return order[::-1]
+            for  child in graph[node]:
+                indegree[child] -= 1
+                if indegree[child] == 0:
+                    queue.append(child)
+        print(order)
+        
+        return order if len(order) ==  numCourses else []
 
 
-
+        
         
